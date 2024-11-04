@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/40b8ba8176.js" crossorigin="anonymous"></script>
+</head>
+<style>
+    *:focus{
+        border: none;
+    }
+</style>
+<body class="bg-[#C6E7FF] text-[#F3F3E0]">
+    <div id="container" class="w-[100vw] h-[80vh] flex justify-center items-center text-center">
+    <div id="maincontent" class="bg-[#608BC1] w-[50%]  rounded-lg">
+    <form action="/" method="post" class="flex flex-col p-[2rem] text-[1.5rem]">
+        <div class="flex items-left mb-[5rem] ml-[8rem]">
+            <label for="inputurl">Destination: </label>
+            <input type="text" name="inputurl" id="inputurl" required class="text-[1.2rem] text-[#133E87] bg-[#C6E7FF] rounded-md pl-[1rem] ml-[2rem]">
+        </div>
+        <div class="flex items-left mb-[5rem] ml-[8rem]">
+            <label for="shorturl">Back Half: </label>
+            <input type="text" name="shorturl" id="shorturl" required class="text-[1.2rem] text-[#133E87] bg-[#C6E7FF] rounded-md pl-[1rem] ml-[3rem]">
+        </div>
+        <div class="w-full items-center">
+            <button type="submit" class="bg-[#D4F6FF] rounded-lg w-[30%] h-[10%] text-[#133E87]">Submit</button>
+        </div>
+    </form>
+    <div class="w-full flex items-center justify-center text-[1.3rem] mb-[1.5rem]">
+        My URLS    🚀
+    </div>
+    <div class="w-full flex items-center justify-center mb-[2rem]">
+        <div id="short" class="flex flex-col p-[2rem] bg-[#FBFBFB] mr-[1rem] rounded-lg text-[#133E87]">
+            <p class="mb-[1.5rem] text-[1.2rem]">Short URL</p>
+            {% for i in userurls.keys() %}
+            <p class="mb-[1.5rem]">
+                /{{i}} <br>
+            </p>
+            {% endfor %}
+        </div>
+        <div id="dest" class="flex flex-col p-[2rem] bg-[#FBFBFB] mr-[1rem] rounded-lg text-[#133E87]">
+            <p class="mb-[1.5rem] text-[1.2rem]">Destination</p>
+            {% for i in userurls.values() %}
+            <p class="mb-[1.5rem]">
+                {{i}} <br>
+            </p>
+            {% endfor %}
+        </div>
+        <div class="flex flex-col p-[2rem] bg-[#FBFBFB] mr-[1rem] rounded-lg text-[#133E87]">
+            <p class="mb-[1.5rem] text-[1.2rem] text-red-500">Delete</p>
+            {% for i in userurls.keys() %}
+            <form action="/" method="post">
+                <input type="text" value="{{i}}" class="hidden">
+                <button class="text-red-500 mb-[1.5rem]" ><i class="fa-solid fa-trash-can"></i></button>
+            </form>
+            {% endfor %}
+        </div>
+    </div>
+    </div id="delteicon">
+    </div>
+</body>
+</html>
